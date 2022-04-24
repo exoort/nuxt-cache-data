@@ -52,7 +52,8 @@
     "jest": "latest",
     "nuxt-edge": "latest",
     "siroc": "latest",
-    "standard-version": "latest"
+    "standard-version": "latest",
+    "@nuxt/types": "^2.15.8"
   },
   "publishConfig": {
     "access": "public"

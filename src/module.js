@@ -1,13 +1,21 @@
-const { readdirSync } = require('fs')
-const { resolve, join } = require('path')
-const { memoryStorage } = require('./core/memory.storage')
+import { readdirSync } from 'fs'
+import { resolve, join } from 'path'
+import { memoryStorage } from './core/memory.storage'
 
 const memoryCache = memoryStorage()
 
-module.exports = function (moduleOptions) {
-  // console.log(this)
+/**
+ * @function
+ * @type {ICacheModule}
+ * @param {ModuleOptions} moduleOptions
+ */
+const cacheModule = function (moduleOptions) {
+  const defaultOptions = {
+    apiUrl: '/cache-api'
+  }
 
   const options = {
+    ...defaultOptions,
     ...this.options.dataCache,
     ...moduleOptions
   }
@@ -40,5 +48,7 @@ module.exports = function (moduleOptions) {
 
   this.addServerMiddleware({ path: '/cache-api', handler: resolve(__dirname, './core/server.middleware.js') })
 }
+
+module.exports = cacheModule
 module.exports.memoryCache = memoryCache()
 module.exports.meta = require('../package.json')

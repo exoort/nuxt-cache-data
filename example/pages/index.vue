@@ -1,13 +1,20 @@
 <template>
   <div>
-    Works! {{ written }}
+    Works!
+    <h2>Written to cache</h2>
+    <p>{{ written }}</p>
+
+    <h2>Got from cache</h2>
+    <p>{{ cache }}</p>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'ExamplePage',
   data () {
     return {
+      cache: null,
       written: null
     }
   },
@@ -40,8 +47,7 @@ export default {
     ])
   },
   async mounted () {
-    const res = await this.$dataCache.get('test')
-    console.log(res)
+    this.cache = await this.$dataCache.get('test')
   }
 }
 </script>

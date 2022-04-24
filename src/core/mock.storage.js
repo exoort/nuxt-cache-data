@@ -11,7 +11,7 @@ export function mockStorage () {
     set (key, value, seconds = 60) {
       // eslint-disable-next-line no-console
       console.error("You can't set cache on disabled service")
-      return false
+      return Promise.resolve(false)
     },
 
     get (key) {
@@ -23,7 +23,7 @@ export function mockStorage () {
     remove (key) {
       // eslint-disable-next-line no-console
       console.error("You can't remove cache on disabled service")
-      return false
+      return Promise.resolve(false)
     }
   }
 }

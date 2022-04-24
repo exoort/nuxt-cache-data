@@ -17,7 +17,7 @@ export function apiStorage () {
     set (key, value, seconds = 60) {
       // eslint-disable-next-line no-console
       console.error("You can't set cache on client")
-      return false
+      return Promise.resolve(false)
     },
 
     async get (key) {
@@ -38,7 +38,7 @@ export function apiStorage () {
     remove (key) {
       // eslint-disable-next-line no-console
       console.error("You can't remove cache on client")
-      return false
+      return Promise.resolve(false)
     }
   }
 }

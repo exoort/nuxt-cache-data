@@ -22,7 +22,7 @@ export function memoryStorage () {
             data = dataSource
           }
 
-          this.set(key, data, seconds)
+          await this.set(key, data, seconds)
         }
 
         return data
@@ -36,33 +36,33 @@ export function memoryStorage () {
           time
         }
 
-        return true
+        return Promise.resolve(true)
       },
 
-      get (key) {
-        return new Promise((resolve) => {
-          const cached = cache[key]
-          const now = new Date().getTime()
+      async get (key) {
+        const cached = cache[key]
+        const now = new Date().getTime()
 
-          if (!cached) {
-            resolve(null)
-          }
+        if (!cached) {
+          return null
+        }
 
-          if (now > cached?.time) {
-            this.remove(key)
+        if (now > cached?.time) {
+          await this.remove(key)
 
-            resolve(null)
-          }
+          return null
+        }
 
-          resolve(cached.value)
-        })
+        return cached.value
       },
 
       remove (key) {
         if (cache[key]) {
           delete cache[key]
+          return Promise.resolve(true)
         }
-        return false
+
+        return Promise.resolve(false)
       }
     }
   }
