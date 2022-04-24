@@ -22,9 +22,10 @@
       "name": "exoort <exortwot@gmail.com>"
     }
   ],
-  "main": "lib/module.js",
+  "main": "dist/module.js",
+  "types": "dist/module.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "build": "siroc build  && mkdist --src src --dist dist",

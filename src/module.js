@@ -19,14 +19,6 @@ module.exports = function (moduleOptions) {
   this.nuxt.options.alias['~dataCache'] = __dirname
   this.nuxt.options.build.transpile.push(__dirname)
 
-  this.extendBuild((config, { isServer }) => {
-    if (!isServer) {
-      config.node = {
-        fs: 'empty'
-      }
-    }
-  })
-
   this.addPlugin({
     src: resolve(__dirname, 'plugin.js'),
     fileName: 'dataCache/index.js',
