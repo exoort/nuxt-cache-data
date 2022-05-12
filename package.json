@@ -1,6 +1,6 @@
 {
   "name": "nuxt-cache-data",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Set and share data between requests",
   "keywords": [
     "nuxt",
@@ -27,7 +27,7 @@
       "name": "exoort <exortwot@gmail.com>"
     }
   ],
-  "main": "dist/module.js",
+  "main": "dist/module.mjs",
   "types": "dist/module.d.ts",
   "files": [
     "dist"
