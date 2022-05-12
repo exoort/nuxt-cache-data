@@ -16,6 +16,6 @@ module.exports = {
   buildDir: resolve(__dirname, '.nuxt'),
   srcDir: __dirname,
   modules: [
-    { handler: require('../src/module') }
+    { handler: require('../lib/module') }
   ]
 }
