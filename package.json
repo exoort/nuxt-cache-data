@@ -1,6 +1,6 @@
 {
   "name": "nuxt-cache-data",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Set and share data between requests",
   "keywords": [
     "nuxt",
@@ -12,11 +12,16 @@
     "fast",
     "response"
   ],
+  "homepage": "https://github.com/exoort/nuxt-cache-data",
+  "bugs": {
+    "url": "https://github.com/exoort/nuxt-cache-data/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/lihbr/nuxt-hue.git"
+    "url": "ssh://git@github.com:exoort/nuxt-cache-data.git"
   },
   "license": "MIT",
+  "author": "Oleksandr Syvash (exoort)",
   "contributors": [
     {
       "name": "exoort <exortwot@gmail.com>"
