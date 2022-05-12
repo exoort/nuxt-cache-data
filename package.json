@@ -1,6 +1,6 @@
 {
   "name": "nuxt-cache-data",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Set and share data between requests",
   "keywords": [
     "nuxt",
@@ -37,7 +37,7 @@
     "build-example": "nuxt build example",
     "dev": "nuxt example",
     "lint": "eslint --ext .js,.vue .",
-    "release": "npm run build && standard-version && git push --follow-tags && npm publish",
+    "release": "npm run build && standard-version && git push --follow-tags && npm publish --access public",
     "start-example": "nuxt start example",
     "test": "npm run lint && jest"
   },
