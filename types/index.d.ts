@@ -1,8 +1,6 @@
 import {Module} from "@nuxt/types";
-// augment typings of Vue.js
-import "./vue";
 
-export interface DataCache {
+interface DataCache {
   fetch<Data = any>(key: string, dataSource: any, seconds?: number): Promise<Data | null>;
 
   set(key: string, data: any, seconds?: number): Promise<boolean>;
@@ -19,18 +17,34 @@ interface ModuleOptions {
 
 type ICacheModule = Module<ModuleOptions>
 
-declare module "@nuxt/vue-app" {
+declare module '@nuxt/vue-app' {
+  interface Context {
+    $dataCache: DataCache
+  }
+
   interface NuxtAppOptions {
     $dataCache: DataCache
   }
 }
+
 // Nuxt 2.9+
-declare module "@nuxt/types" {
+declare module '@nuxt/types' {
+  interface Context {
+    $dataCache: DataCache
+  }
   interface NuxtAppOptions {
     $dataCache: DataCache
   }
+}
 
-  interface Context {
+declare module 'vue/types/vue' {
+  interface Vue {
+    $dataCache: DataCache
+  }
+}
+
+declare module 'vuex/types/index' {
+  interface Store<S> {
     $dataCache: DataCache
   }
 }
