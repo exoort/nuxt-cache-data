@@ -15,7 +15,8 @@
     "allowSyntheticDefaultImports": true,
     "types": [
       "node",
-      "jest"
+      "jest",
+      "@nuxtjs/axios"
     ]
   },
   "exclude": [

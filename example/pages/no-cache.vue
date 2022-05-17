@@ -1,21 +1,25 @@
 <template>
   <div>
-    <nuxt-link to="/external">
-      Another page
-    </nuxt-link>
-
     Works!
     <h2>Written to cache</h2>
     <p>{{ written }}</p>
 
     <h2>Got from cache</h2>
     <p>{{ cache }}</p>
+
+    <nuxt-link to="/">
+      Cached page
+    </nuxt-link>
+
+    <nuxt-link to="/external">
+      Another page
+    </nuxt-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ExamplePage',
+  name: 'NoCachePage',
   data () {
     return {
       cache: null,
@@ -28,10 +32,7 @@ export default {
       resolve(dynamicData.default)
     }, 2000))
 
-    this.written = await this.$dataCache.fetch(
-      'posts',
-      () => mockReq()
-    )
+    this.written = await mockReq()
   }
 }
 </script>

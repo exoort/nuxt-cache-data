@@ -16,6 +16,7 @@ module.exports = {
   buildDir: resolve(__dirname, '.nuxt'),
   srcDir: __dirname,
   modules: [
+    '@nuxtjs/axios',
     { handler: require('../lib/module') }
   ]
 }
