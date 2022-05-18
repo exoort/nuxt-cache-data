@@ -1,13 +1,20 @@
 import {Module} from "@nuxt/types";
 
+type DataCacheKey = string | {
+  key: string,
+  secret?: string,
+}
+
 interface DataCache {
-  fetch<Data = any>(key: string, dataSource: any, seconds?: number): Promise<Data | null>;
+  getAll(): Promise<Data | null>;
 
-  set(key: string, data: any, seconds?: number): Promise<boolean>;
+  fetch<Data = any>(key: DataCacheKey, dataSource: any, seconds?: number): Promise<Data | null>;
 
-  get<Data = any> (key: string): Promise<Data | null> ;
+  set(key: DataCacheKey, data: any, seconds?: number): Promise<boolean>;
 
-  remove (key: string): Promise<boolean>;
+  get<Data = any>(key: DataCacheKey): Promise<Data | null>;
+
+  remove(key: DataCacheKey): Promise<boolean>;
 }
 
 interface ModuleOptions {
@@ -32,6 +39,7 @@ declare module '@nuxt/types' {
   interface Context {
     $dataCache: DataCache
   }
+
   interface NuxtAppOptions {
     $dataCache: DataCache
   }

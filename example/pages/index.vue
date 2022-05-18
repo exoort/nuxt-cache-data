@@ -1,37 +1,27 @@
 <template>
   <div>
-    <nuxt-link to="/external">
-      Another page
-    </nuxt-link>
-
-    Works!
-    <h2>Written to cache</h2>
-    <p>{{ written }}</p>
-
-    <h2>Got from cache</h2>
-    <p>{{ cache }}</p>
+    <div>
+      <nuxt-link to="/cached">
+        Cached page
+      </nuxt-link>
+    </div>
+    <br>
+    <div>
+      <nuxt-link to="/with-secret">
+        Cached page with secret
+      </nuxt-link>
+    </div>
+    <br>
+    <div>
+      <nuxt-link to="/no-cache">
+        No cache
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ExamplePage',
-  data () {
-    return {
-      cache: null,
-      written: null
-    }
-  },
-  async fetch () {
-    const mockReq = () => new Promise(resolve => setTimeout(async () => {
-      const dynamicData = await import('../mock/exampleData')
-      resolve(dynamicData.default)
-    }, 2000))
-
-    this.written = await this.$dataCache.fetch(
-      'posts',
-      () => mockReq()
-    )
-  }
+  name: 'ExamplePage'
 }
 </script>
