@@ -37,7 +37,8 @@
     "build-example": "nuxt build example",
     "dev": "nuxt example",
     "lint": "eslint --ext .js,.vue .",
-    "release": "standard-version && git push --follow-tags && npm publish",
+    "release": " && git push --follow-tags && npm publish",
+    "release:bump": "standard-version && npm run release",
     "start-example": "nuxt start example",
     "test": "npm run lint && jest"
   },
