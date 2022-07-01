@@ -1,18 +1,26 @@
 import {Module} from "@nuxt/types";
 
-type DataCacheKey = string | {
+export type DataCacheKey = string | {
   key: string,
   secret?: string,
 }
 
-interface DataCache {
-  getAll(): Promise<Data | null>;
+export type DataCacheItem = {
+  value: string,
+  time: number,
+  secret: string | null,
+}
 
-  fetch<Data = any>(key: DataCacheKey, dataSource: any, seconds?: number): Promise<Data | null>;
+export type DataCacheItems = Record<string, DataCacheItem>
+
+interface DataCache {
+  getAll(): Promise<DataCacheItems>;
+
+  fetch<Data = any>(key: DataCacheKey, dataSource: any, seconds?: number): Promise<Data>;
 
   set(key: DataCacheKey, data: any, seconds?: number): Promise<boolean>;
 
-  get<Data = any>(key: DataCacheKey): Promise<Data | null>;
+  get<Data = any>(key: DataCacheKey): Promise<Data>;
 
   remove(key: DataCacheKey): Promise<boolean>;
 }
