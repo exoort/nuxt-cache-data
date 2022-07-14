@@ -27,7 +27,7 @@ interface DataCache {
 
 interface ModuleOptions {
   disabled?: boolean;
-  apiEndpoint?: string;
+  writeEmpty?: boolean;
 }
 
 type ICacheModule = Module<ModuleOptions>

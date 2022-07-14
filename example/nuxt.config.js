@@ -21,5 +21,8 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     { handler: require('../lib/module') }
-  ]
+  ],
+  dataCache: {
+    disabled: true
+  }
 }
